@@ -9,6 +9,12 @@ Run using uv:
 uv run hypermedia-webapp
 ```
 
-## Original
+or, to have changes trigger a reload:
+
+```shell
+uv run dev-server
+```
+
+## Original full version
 
 See [https://github.com/bigskysoftware/contact-app](https://github.com/bigskysoftware/contact-app)
