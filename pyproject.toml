@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling>=1.21.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hypermedia-webapp"
+version = "0.1.0"
+description = "Following along with https://hypermedia.systems/a-web-1-0-application/"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+  "flask",
+]
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src/app.py"]
+sources = ["src"]
+
+[project.scripts]
+hypermedia-webapp = "app:main"
+dev-server = "dev_server:main"
