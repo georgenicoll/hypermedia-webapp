@@ -112,7 +112,7 @@ def contacts_delete(contact_id):
         return ""
 
 
-@app.route("/contacts/", methods=["DELETE"])
+@app.route("/contacts", methods=["DELETE"])
 def contacts_delete_all():
     page = int(request.args.get("page", 1))
     contact_ids = [
@@ -126,7 +126,7 @@ def contacts_delete_all():
         contact.delete()
     flash("Deleted Contact!")
     contacts_set = Contact.all(page)
-    return render_template("index.html", contact=contacts_set, page=page, archiver=Archiver.get())
+    return render_template("index.html", contacts=contacts_set, page=page, archiver=Archiver.get())
 
 
 @app.route("/contacts/archive", methods=["POST"])
