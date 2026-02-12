@@ -8,7 +8,7 @@ from random import random
 # ========================================================
 # Contact Model
 # ========================================================
-PAGE_SIZE = 100
+PAGE_SIZE = 10
 MODEL_FILE = "dev-data/db.json"
 
 class Contact:
@@ -144,7 +144,7 @@ class Archiver:
         Archiver.archive_status = "Complete"
 
     def archive_file(self):
-        return 'contacts.json'
+        return '../contacts.json'
 
     def reset(self):
         Archiver.archive_status = "Waiting"
