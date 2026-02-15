@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-from app import app
+from server import app
+
 
 def main() -> None:
     app.run(debug=True)
