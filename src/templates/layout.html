@@ -7,12 +7,17 @@
     <script src="/static/js/htmx-2.0.8.js"></script>
     <script src="/static/js/_hyperscript-0.9.14.js"></script>
     <!--script src="/static/js/rsjs-menu.js" type="module"></script-->
+    <script src="/static/js/extras.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script defer src="https://unpkg.com/alpinejs"></script>
 </head>
 <body hx-boost="true">
-    <div class="counter" x-data="{ count: 0 }">
-        <output x-text="count"></output>
-        <button @click="count++">Increment</button>
+    <div class="counter">
+        <output>0</output>
+        <button _="on click
+            increment the textContent of the previous <output/>">
+        Increment
+        </button>
     </div>
     <main>
         <header>
