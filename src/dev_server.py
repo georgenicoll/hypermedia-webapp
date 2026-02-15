@@ -3,7 +3,7 @@ from server import app
 
 
 def main() -> None:
-    app.run(host='0.0.0.0', debug=True)
+    app.run(debug=True)
 
 if __name__ == "__main__":
     main()

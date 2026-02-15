@@ -17,5 +17,5 @@ only-include = ["src/app.py"]
 sources = ["src"]
 
 [project.scripts]
-server = "server:main"
+hypermedia-webapp = "app:main"
 dev-server = "dev_server:main"
