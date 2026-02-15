@@ -1,0 +1,118 @@
+<doc xmlns="https://hyperview.org/hyperview">
+  <screen>
+    <styles>
+      <!-- Layout -->
+      <style id="container" flex="1" backgroundColor="#ffffff" />
+      <style id="header-section" paddingTop="16" paddingLeft="16" paddingRight="16" paddingBottom="16" backgroundColor="#f8f9fa" borderBottomWidth="1" borderBottomColor="#dee2e6" />
+      <style id="content-section" paddingLeft="16" paddingRight="16" paddingTop="24" />
+
+      <!-- Header -->
+      <style id="header" fontSize="28" fontWeight="bold" color="#212529" />
+
+      <!-- Form fields -->
+      <style id="field-container" marginBottom="20" />
+      <style id="label" fontSize="14" fontWeight="600" color="#212529" marginBottom="8" />
+      <style id="input" borderWidth="1" borderColor="#ced4da" padding="12" borderRadius="6" fontSize="16" backgroundColor="#ffffff" />
+      <style id="input-error" borderColor="#dc3545" />
+      <style id="error" color="#dc3545" fontSize="13" marginTop="6" />
+
+      <!-- Buttons -->
+      <style id="button-container" marginTop="32" />
+      <style id="create-button" backgroundColor="#198754" paddingVertical="14" paddingHorizontal="20" borderRadius="6" alignItems="center" marginBottom="12" />
+      <style id="create-button-text" color="#ffffff" fontSize="16" fontWeight="600" />
+      <style id="cancel-button" paddingVertical="12" alignItems="center" />
+      <style id="cancel-button-text" color="#6c757d" fontSize="16" />
+    </styles>
+
+    <body style="container">
+      <!-- Header -->
+      <view style="header-section">
+        <text style="header">New Contact</text>
+      </view>
+
+      <scroll-view style="content-section">
+        <form>
+          <!-- First Name -->
+          <view style="field-container">
+            <text style="label">First Name</text>
+            <text-field
+              name="first_name"
+              placeholder="First Name"
+              style="input{% if contact.errors.first %} input-error{% endif %}"
+              value="{{ contact.first or '' }}"
+            />
+            {% if contact.errors.first %}
+            <text id="first-error" style="error">{{ contact.errors.first }}</text>
+            {% endif %}
+          </view>
+
+          <!-- Last Name -->
+          <view style="field-container">
+            <text style="label">Last Name</text>
+            <text-field
+              name="last_name"
+              placeholder="Last Name"
+              style="input{% if contact.errors.last %} input-error{% endif %}"
+              value="{{ contact.last or '' }}"
+            />
+            {% if contact.errors.last %}
+            <text id="last-error" style="error">{{ contact.errors.last }}</text>
+            {% endif %}
+          </view>
+
+          <!-- Phone -->
+          <view style="field-container">
+            <text style="label">Phone</text>
+            <text-field
+              name="phone"
+              placeholder="Phone"
+              style="input{% if contact.errors.phone %} input-error{% endif %}"
+              value="{{ contact.phone or '' }}"
+            />
+            {% if contact.errors.phone %}
+            <text id="phone-error" style="error">{{ contact.errors.phone }}</text>
+            {% endif %}
+          </view>
+
+          <!-- Email -->
+          <view style="field-container">
+            <text style="label">Email</text>
+            <text-field
+              name="email"
+              placeholder="Email"
+              style="input{% if contact.errors.email %} input-error{% endif %}"
+              value="{{ contact.email or '' }}"
+            />
+            {% if contact.errors.email %}
+            <text id="email-error" style="error">{{ contact.errors.email }}</text>
+            {% endif %}
+          </view>
+
+          <!-- Action Buttons -->
+          <view style="button-container">
+            <!-- Create Button -->
+            <view style="create-button">
+              <behavior
+                trigger="press"
+                action="replace"
+                href="/hv/contacts/new"
+                verb="post"
+                target="root"
+              />
+              <text style="create-button-text">Create Contact</text>
+            </view>
+
+            <!-- Cancel Button -->
+            <view style="cancel-button">
+              <behavior
+                trigger="press"
+                action="back"
+              />
+              <text style="cancel-button-text">Cancel</text>
+            </view>
+          </view>
+        </form>
+      </scroll-view>
+    </body>
+  </screen>
+</doc>

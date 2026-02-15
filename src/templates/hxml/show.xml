@@ -1,0 +1,91 @@
+<doc xmlns="https://hyperview.org/hyperview">
+  <screen>
+    <styles>
+      <!-- Layout -->
+      <style id="container" flex="1" backgroundColor="#ffffff" />
+      <style id="header-section" paddingTop="16" paddingLeft="16" paddingRight="16" paddingBottom="24" backgroundColor="#f8f9fa" borderBottomWidth="1" borderBottomColor="#dee2e6" />
+      <style id="content-section" paddingLeft="16" paddingRight="16" paddingTop="24" />
+
+      <!-- Header -->
+      <style id="name-header" fontSize="32" fontWeight="bold" color="#212529" marginBottom="8" />
+
+      <!-- Field display -->
+      <style id="field-container" marginBottom="24" />
+      <style id="field-label" fontSize="12" fontWeight="600" color="#6c757d" marginBottom="6" letterSpacing="0.5" />
+      <style id="field-value" fontSize="18" color="#212529" />
+      <style id="empty-value" fontSize="18" color="#adb5bd" fontStyle="italic" />
+
+      <!-- Buttons -->
+      <style id="button-container" marginTop="32" />
+      <style id="primary-button" backgroundColor="#0d6efd" paddingVertical="14" paddingHorizontal="20" borderRadius="6" alignItems="center" marginBottom="12" />
+      <style id="primary-button-text" color="#ffffff" fontSize="16" fontWeight="600" />
+      <style id="danger-button" backgroundColor="#dc3545" paddingVertical="14" paddingHorizontal="20" borderRadius="6" alignItems="center" marginBottom="12" />
+      <style id="danger-button-text" color="#ffffff" fontSize="16" fontWeight="600" />
+      <style id="back-button" paddingVertical="12" alignItems="center" />
+      <style id="back-button-text" color="#0d6efd" fontSize="16" />
+    </styles>
+
+    <body style="container">
+      <!-- Header -->
+      <view style="header-section">
+        <text style="name-header">{{ contact.first }} {{ contact.last }}</text>
+      </view>
+
+      <view style="content-section">
+        <!-- Phone Field -->
+        <view style="field-container">
+          <text style="field-label">PHONE</text>
+          {% if contact.phone %}
+          <text style="field-value">{{ contact.phone }}</text>
+          {% else %}
+          <text style="empty-value">No phone number</text>
+          {% endif %}
+        </view>
+
+        <!-- Email Field -->
+        <view style="field-container">
+          <text style="field-label">EMAIL</text>
+          {% if contact.email %}
+          <text style="field-value">{{ contact.email }}</text>
+          {% else %}
+          <text style="empty-value">No email address</text>
+          {% endif %}
+        </view>
+
+        <!-- Action Buttons -->
+        <view style="button-container">
+          <!-- Edit Button -->
+          <view style="primary-button">
+            <behavior
+              trigger="press"
+              action="push"
+              href="/hv/contacts/{{ contact.id }}/edit"
+            />
+            <text style="primary-button-text">Edit Contact</text>
+          </view>
+
+          <!-- Delete Button -->
+          <view style="danger-button">
+            <behavior
+              trigger="press"
+              action="replace"
+              href="/hv/contacts/{{ contact.id }}"
+              verb="delete"
+              target="root"
+            />
+            <text style="danger-button-text">Delete Contact</text>
+          </view>
+
+          <!-- Back Button -->
+          <view style="back-button">
+            <behavior
+              trigger="press"
+              action="back"
+            />
+            <text style="back-button-text">Back to Contacts</text>
+          </view>
+        </view>
+      </view>
+    </body>
+  </screen>
+</doc>
